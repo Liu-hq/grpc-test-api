@@ -1,0 +1,33 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true; //是否生成Service,每个message和service都会被生成为一个类。如果是false，则所有的message和service都将会是java_outer_classname的内部类
+option java_package = "com.liu.demo.demo"; //生成的包路径
+option java_outer_classname = "DemoProto"; //message
+option objc_class_prefix = "HLW"; //前缀
+
+package demo;
+
+message Demo {
+  string name = 1; //名字
+  string sex = 2; //性别
+  repeated string position = 3; //由于repeated关键字修饰，这个属性将会生成一个集合
+  map<string,string> email = 4; //map类型的key不能是枚举类型(enum)
+}
+
+// 定义接口.
+service DemoService {
+  // 接口方法
+  rpc SayHello (DemoRequest) returns (DemoResponse) {}
+}
+
+// 请求的消息.
+message DemoRequest {
+  int32 age = 1;
+  map<string,string> email = 2; //map类型的key不能是枚举类型(enum)
+}
+
+// 返回的消息
+message DemoResponse {
+  string message = 1;
+}
