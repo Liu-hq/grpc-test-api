@@ -8,11 +8,25 @@ option objc_class_prefix = "HLW"; //前缀
 
 package demo;
 
+//message 消息实体类
+//字段类型 标量类型
+//数字标识符
+
 message Demo {
   string name = 1; //名字
   string sex = 2; //性别
   repeated string position = 3; //由于repeated关键字修饰，这个属性将会生成一个集合
-  map<string,string> email = 4; //map类型的key不能是枚举类型(enum)
+  map<string,string> param = 4; //map类型的key不能是枚举类型(enum)
+  repeated string query = 5;
+
+}
+
+message Test {
+  string username = 1;
+}
+
+message ResultTest { //返回消息
+  map<string, string> result = 1;
 }
 
 // 定义接口.
@@ -23,11 +37,13 @@ service DemoService {
 
 // 请求的消息.
 message DemoRequest {
-  int32 age = 1;
-  map<string,string> email = 2; //map类型的key不能是枚举类型(enum)
+  int32 age = 1;  //1\2\3这些是数字标识符 二进制中识别每个字段，不能改变
+  map<string,string> param = 2; //map类型的key不能是枚举类型(enum)
+  Demo demo = 3;
+  Test test = 4;
 }
 
 // 返回的消息
 message DemoResponse {
-  string message = 1;
+  ResultTest resultTest = 1; // 返回结果
 }

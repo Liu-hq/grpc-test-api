@@ -76,10 +76,10 @@ applicationDistribution.into('bin') {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "http://192.168.0.224:8081/repository/3rd-party/") {
+            repository(url: "http://192.168.0.224:8081/repository/maven-snapshots/") {
                 authentication(userName: "publish", password: "publish")
             }
-            pom.version = "0.1"
+            pom.version = "1.0-SNAPSHOT"
             pom.artifactId = "grpc-test-api"
             pom.groupId = "grpc.test.api"
         }
