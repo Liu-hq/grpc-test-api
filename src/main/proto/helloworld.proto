@@ -2,11 +2,11 @@
 syntax = "proto3";
 
 option java_multiple_files = true; //是否生成Service,每个message和service都会被生成为一个类。如果是false，则所有的message和service都将会是java_outer_classname的内部类
-option java_package = "com.liu.demo.demo"; //生成的包路径
+option java_package = "com.grpc.demo.service"; //生成的包路径
 option java_outer_classname = "DemoProto"; //message
 option objc_class_prefix = "HLW"; //前缀
 
-package demo;
+package impl;
 
 //message 消息实体类
 //字段类型 标量类型
